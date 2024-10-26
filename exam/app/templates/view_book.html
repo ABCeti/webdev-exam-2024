@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ book.title }}</h1>
+    <img src="{{ url_for('static', filename='covers/' + book.cover.filename) }}" alt="Обложка {{ book.title }}" class="book-cover">
+    <p><strong>Автор:</strong> {{ book.author }}</p>
+    <p><strong>Год:</strong> {{ book.year }}</p>
+    <p><strong>Описание</strong></p> <p>{{ book.description }}</p>
+
+    <h2>Рецензии</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <strong>{{ review.user.name }}:</strong> {{ review.text }} (Оценка: {{ review.rating }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет рецензий на эту книгу.</p>
+    {% endif %}
+
+    {% if current_user.is_authenticated %}
+        {% set user_reviewed = false %}
+        {% for review in reviews %}
+            {% if review.user.id == current_user.id %}
+                {% set user_reviewed = true %}
+            {% endif %}
+        {% endfor %}
+
+        {% if not user_reviewed %}
+            <a href="{{ url_for('add_review', book_id=book.id) }}">Написать рецензию</a>
+        {% else %}
+            <p>Вы уже оставили рецензию на эту книгу.</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

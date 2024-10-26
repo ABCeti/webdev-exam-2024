@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика просмотра книг{% endblock %}
+
+{% block content %}
+    <h1>Статистика просмотра книг</h1>
+    <form method="GET" action="{{ url_for('book_stats') }}">
+        <div class="form-group">
+            <label for="date_from">Дата от:</label>
+            <input type="date" name="date_from" class="form-control" id="date_from">
+        </div>
+        <div class="form-group">
+            <label for="date_to">Дата до:</label>
+            <input type="date" name="date_to" class="form-control" id="date_to">
+        </div>
+        <button type="submit" class="btn btn-primary">Применить</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Книга</th>
+                <th>Количество просмотров</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats.items %}
+            <tr>
+                <td>{{ loop.index + (stats.page - 1) * stats.per_page }}</td>
+                <td>{{ stat.book.title }}</td>
+                <td>{{ stat.view_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if stats.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('book_stats', page=stats.prev_num) }}">Назад</a>
+                </li>
+            {% endif %}
+            <li class="page-item disabled"><span class="page-link">Страница {{ stats.page }} из {{ stats.pages }}</span></li>
+            {% if stats.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('book_stats', page=stats.next_num) }}">Вперед</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

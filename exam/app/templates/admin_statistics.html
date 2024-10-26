@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+    <h1>Статистика</h1>
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_log') }}">Журнал действий пользователей</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('book_stats') }}">Статистика просмотра книг</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить рецензию{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Добавить рецензию для книги "{{ book.title }}"</h1>
+    <form method="POST" action="{{ url_for('add_review', book_id=book.id) }}" class="mt-4">
+        <div class="form-group">
+            <label for="rating">Оценка:</label>
+            <select name="rating" id="rating" class="form-control" required>
+                <option value="" disabled selected>Выберите оценку</option>
+                <option value="5">Отлично</option>
+                <option value="4">Хорошо</option>
+                <option value="3">Удовлетворительно</option>
+                <option value="2">Неудовлетворительно</option>
+                <option value="1">Плохо</option>
+                <option value="0">Ужасно</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="text">Текст рецензии:</label>
+            <textarea name="text" id="text" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}

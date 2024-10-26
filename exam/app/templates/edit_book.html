@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать книгу{% endblock %}
+
+{% block content %}
+    <h1>Редактировать книгу "{{ book.title }}"</h1>
+    <form method="POST" action="{{ url_for('edit_book', book_id=book.id) }}" enctype="multipart/form-data">
+        <div>
+            <label for="title">Название:</label>
+            <input type="text" name="title" id="title" value="{{ book.title }}" required>
+        </div>
+        <div>
+            <label for="description">Описание:</label>
+            <textarea name="description" id="description" required>{{ book.description }}</textarea>
+        </div>
+        <div>
+            <label for="year">Год:</label>
+            <input type="number" name="year" id="year" value="{{ book.year }}" required>
+        </div>
+        <div>
+            <label for="publisher">Издательство:</label>
+            <input type="text" name="publisher" id="publisher" value="{{ book.publisher }}" required>
+        </div>
+        <div>
+            <label for="author">Автор:</label>
+            <input type="text" name="author" id="author" value="{{ book.author }}" required>
+        </div>
+        <div>
+            <label for="pages">Страниц:</label>
+            <input type="number" name="pages" id="pages" value="{{ book.pages }}" required>
+        </div>
+        <div>
+            <label for="cover">Обложка (файл):</label>
+            <input type="file" name="cover" id="cover">
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}
