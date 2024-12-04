@@ -1,0 +1,19 @@
+Python library modules
+----------------------
+
+If you need to install a Python library module (or version) that isn't packaged
+in Debian, we recommend installing it into a virtualenv, where possible. You
+can create virtualenvs with the venv Python stdlib module (in the
+"python3-venv" Debian package) or the virtualenv Python 3rd-party tool (in the
+"virtualenv" Debian package).
+
+Both of these will create an isolated environment, with a copy of pip in it.
+After activating the environment, you can install python applications and
+library modules into the virtual environment.
+
+e.g. instead of running:
+$ pip install --user foo
+run:
+$ mkdir -p ~/.venvs
+$ python3 -m venv ~/.venvs/foo
+$ ~/.venvs/foo/bin/python -m pip install foo
