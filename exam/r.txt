@@ -26,5 +26,14 @@ ERROR: Could not find a version that satisfies the requirement foo (from version
 ERROR: No matching distribution found for foo
 
 
-ERROR: Could not install packages due to an OSError: [Errno 13] Permission denied: '/home/v1/Documents/webdev-exam-2024-2/exam/venvs/foo/lib/python3.11/site-packages/typing_extensions.py'
-Check the permissions.
+ERROR: Cannot install -r requirements.txt (line 3) and Werkzeug==2.3.2 because these package versions have conflicting dependencies.
+
+The conflict is caused by:
+    The user requested Werkzeug==2.3.2
+    flask 2.3.2 depends on Werkzeug>=2.3.3
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip attempt to solve the dependency conflict
+
+ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
