@@ -24,3 +24,7 @@ $ ~/.venvs/foo/bin/python -m pip install foo
 v1@deb1://home/v1/Documents/webdev-exam-2024-2/exam$ sudo venvs/foo/bin/python -m pip install foo
 ERROR: Could not find a version that satisfies the requirement foo (from versions: none)
 ERROR: No matching distribution found for foo
+
+
+ERROR: Could not install packages due to an OSError: [Errno 13] Permission denied: '/home/v1/Documents/webdev-exam-2024-2/exam/venvs/foo/lib/python3.11/site-packages/typing_extensions.py'
+Check the permissions.
