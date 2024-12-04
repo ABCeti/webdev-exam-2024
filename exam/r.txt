@@ -37,3 +37,10 @@ To fix this you could try to:
 2. remove package versions to allow pip attempt to solve the dependency conflict
 
 ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/#dealing-with-dependency-conflicts
+
+
+
+Using cached greenlet-3.1.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (602 kB)
+Installing collected packages: typing-extensions, six, python-dotenv, MarkupSafe, markdown, itsdangerous, greenlet, click, blinker, WTForms, Werkzeug, SQLAlchemy, python-dateutil, Mako, Jinja2, Flask, Faker, alembic, Flask-WTF, Flask-SQLAlchemy, Flask-Login, Flask-Migrate
+ERROR: Could not install packages due to an OSError: [Errno 13] Permission denied: '/home/v1/Documents/webdev-exam-2024-2/exam/venvs/foo/lib/python3.11/site-packages/typing_extensions.py'
+Check the permissions.
