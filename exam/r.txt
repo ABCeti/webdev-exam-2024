@@ -17,3 +17,10 @@ run:
 $ mkdir -p ~/.venvs
 $ python3 -m venv ~/.venvs/foo
 $ ~/.venvs/foo/bin/python -m pip install foo
+
+
+
+
+v1@deb1://home/v1/Documents/webdev-exam-2024-2/exam$ sudo venvs/foo/bin/python -m pip install foo
+ERROR: Could not find a version that satisfies the requirement foo (from versions: none)
+ERROR: No matching distribution found for foo
